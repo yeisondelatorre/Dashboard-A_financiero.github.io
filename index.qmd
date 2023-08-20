@@ -1,0 +1,134 @@
+---
+title: "Creación de Dashboard con Power Bi"
+subtitle: "Sesión #02: Dashboard financiero - primeros pasos"
+author: 
+  - name: Yeison De La Torre, Mgtr
+    email: ydelatorre@unimagdalena.edu.co
+    affiliations:
+      - name: Universidad del Magdalena, Santa Marta
+date: "8/11/2023"
+lang: es
+toc: true
+toc-depth: 3
+toc-location: left
+toc-title: ""
+fontsize: 13pt
+number-sections: false
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+      
+self-contained: true 
+---
+
+# 1. Introducción
+
+Power Bi en su versión Desktop es una aplicación de caracter gratuito, se puede instalar en el equipo local y le permite `conectarse` a los datos, `transformarlos` y `visualizarlos`. La conexión con distintos origenes de información y combinarlos **(Modelado);** Lo anterior nos facilita la manipulación en la creación de objetos visuales y colecciones como el que se ilustra en la figura 1.
+
+![Figura 1. Dashboard EX-IM](images/maxresdefault.jpg){fig-align="center"}
+
+en este orden de ideas, lo anterior se puede compartir como informes con otras personas u organizaciones. La mayoria de los usuarios que trabajan con proyectos de inteligencia empresarial, usan **Power BI** para crear informes y luego el **servicio Power BI** para comunicar sus informes con los demas [(Microsoft Power BI, 2021)](http://docs.microsoft.com/es-es/power-bi/fundamentals/desktop-what-is-desktop)
+
+# 2. Usos de power BI
+
+en términos generales Power Bi se emplea normalmente en:
+
+-   Conexción
+
+-   Modelado
+
+-   creación de objetos visuales
+
+-   creación de informes
+
+-   compartir informe
+
+## 2.1. Conexión a datos
+
+el paso fundamental para trabajar con la herramienta consiste en establecer una conexión con los datos a manipular. (véase la figura 2)
+
+`Inicio>>obtener datos>>ventana emergente`
+
+![Figura 2. Obtención de datos](images/obtención-de-datos.gif)
+
+se evidencia la variedad categórica de datos que permiten el acceso a distintos origenes
+
+## 2.2. Modelado
+
+Obtenido el conjunto de datos según su fuente y extensión de archivo es imperativo este paso, que consiste en la limpieza o depuración y transformación de los datos (previo a la modelación) esto lo realizaremos con un ejemplo practivo empleando el `Power Query Editor`
+
+**"aqui va la imagen de ejemplo"**
+
+## 2.3. Creación de objetos visuales
+
+La idea principal de la creación del objeto visual consiste en utilizar el lienzo que nos proporsiona Power BI y tratar de hacer un reporte amigable a la vista; No existe un manual de donde y como colocar los gráficos, todo depende del ingenio y creatividad del usuario. No obstante la herramienta cuenta con un gama diversificada de gráficos que ayudará en la experiencia de la creación del Dashboard (véase la figura 4)
+
+![Figura 4. Gráficos y edición del lienzo](images/visualización.gif){fig-align="center"}
+
+## 2.4. Creación de informes
+
+En **Power BI**, la colección de objetos visuales que muestran diversons aspectos de los datos utilizados para crear el modelo de análisis recibe el nombre de **Informe.** Al igual que en un archivo de excel contiene varias hojas, igual acontece con el informe. Veamos la estructura de informe cuyo datos son libres y replicables (Véase la figura 5.)
+
+![Figura 5. Dashboard con Power BI - Informe financiero](images/dashboard.png){fig-align="center"}
+
+## 2.5. Publicar Informe
+
+Para publicar el informe debe dar click en el botón inicio y luego en publicar (véase la figura 6) la herramienta se conectará al servicio de Power BI con una cuenta previamente registrada; donde se mostrará las distintas ubicación de compartir su Dashboard
+
+![Figura 6. Publicación de Dashboard](images/publish.gif){fig-align="center"}
+
+# 3. Manos a la obra (Práctica A.F.)
+
+El objetivo de la práctica radica en analizar un conjunto de datos financieros mediante **Power BI** para lograr el objetivo es necesario seguir los pasos definidos con anterioridad.
+
+## 3.1. Cargar datos
+
+Antes que nada creemos una carpeta en el escritorio donde trabajaremos. El archivo de trabajo se puede descargar [aquí](https://go.microsoft.com/fwlink/?linkid=521962) una vez descargado ubique este archivo en la carpeta de trabajo y aplique los siguientes pasos para obtener los datos de análisis (Véase la figura 7)
+
+-   `abrir Power BI >> doble click en la pestaña página 1 >> asignar el nombre análisis_financiero`
+
+-   configurar las propiedades del lienzo `Tamaño 16:9, específique el Color de fon a su gusto con una trasnparencia de 80%`
+
+![Figura 7. Configuración del lienzo](images/config-del-lienzo.gif){fig-align="center"}
+
+Guarde este paso en la carpeta de trabajo y luego de click en archivo \>\> cargar datos \>\> datos de excel \>\> transformar
+
+El archivo ***Financial sample*** se compone de 700 observaciones y 16 variables. La cual describe el destino de las ventsa de sus productos segmentada por organización (véase la figura 8)
+
+![Figura 8. Cargar los datos financial sample](images/cargar-datos.gif){width="1920"}
+
+Hagamos unas modificaciones cómo: modificar los datos de la variable unidades vendidas, segmento y nombre del mes
+
+## 3.2. Creación de una medida
+
+para ello tenemos multiples opciones para crear una medida, entre ella está el lenguaje DAX, similar a las funciones que hacemos aparecer en el excel común. Para ello le damos click en `Nueva medida >>excribir la expresión total_unidades_vendidas = sum ('financials[Unite Sold])` (véase la Figura 9)
+
+![Figura 9. Creación de nueva medida DAX](images/neuva-medida.gif){fig-align="center"}
+
+##  3.3. Creación de un calendario
+
+En nuestra barra de tarea vamos a la pestaña de modelado y creamos un nuevo calendario en lenguaje DAX para ello escribimos lo siguiente
+
+***`Calendario = calendar(date(2014,12,31),date(2031,01,01))`***
+
+(véase la siguiente figura 10)
+
+![Figura 10. Creación de un calendario](images/calendario.gif){fig-align="center"}
+
+## 3.4. Creación de informe
+
+Que tal si creamos un informe con el conjunto de datos transformados y depurados que contenga lo siguiente:
+
+-   Mes y año en los que se ha consignado el mayor beneficio
+
+-   Ubicación donde la empresa tiene mayor exito
+
+-   Producto en los que la empresa debe definir políticas de expansión
+
+-   Mayor rendimiento por segmento
+
+creemos un cuadro de texto y agreguemos nuestro primer gráfico de barra para respuesta de nuestro primer interrogante **¿en que año y mes ha consignado el mayor beneficio obtenido por la empresa?**
+
+**Abramos nuestro Power BI y demos respuesta a estos interregomantes**
